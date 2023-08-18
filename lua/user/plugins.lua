@@ -13,6 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     { 'MunifTanjim/nui.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
+    {
+        "RRethy/nvim-base16",
+        config = function()
+            vim.cmd([[colorscheme base16-tokyo-city-terminal-dark]])
+        end,
+    },
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
