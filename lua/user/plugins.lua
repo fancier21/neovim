@@ -49,17 +49,19 @@ local plugins = {
         version = "*",
         config = true
     },
-    { "lukas-reineke/indent-blankline.nvim" },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {}
+    },
     { 'lewis6991/gitsigns.nvim' },
-    { 'sindrets/diffview.nvim' },
+    {
+        'sindrets/diffview.nvim',
+        opts = {}
+    },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
+        opts = {},
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -107,21 +109,26 @@ local plugins = {
         'Exafunction/codeium.vim',
         event = 'BufEnter'
     },
-    { 'kevinhwang91/nvim-bqf' },
+    {
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf',
+        opts = {}
+    },
     {
         'numToStr/Comment.nvim',
-        opts = {
-            -- add any options here
-        },
+        opts = {},
         lazy = false,
     },
     { 'tpope/vim-surround' },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        opts = {} -- this is equalent to setup({}) function
+        opts = {}
     },
-    { 'windwp/nvim-ts-autotag' },
+    {
+        'windwp/nvim-ts-autotag',
+        opts = {}
+    },
     {
         "rest-nvim/rest.nvim",
         dependencies = {
@@ -135,13 +142,9 @@ local plugins = {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
+        opts = {}
     },
-    { "nvimdev/guard.nvim" }
+    { "nvimdev/guard.nvim" },
 }
 
 require("lazy").setup(plugins)
