@@ -42,7 +42,7 @@ local plugins = {
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
+        build = 'make'
     },
     {
         'akinsho/toggleterm.nvim',
@@ -51,6 +51,7 @@ local plugins = {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         opts = {}
     },
     { 'lewis6991/gitsigns.nvim' },
@@ -144,7 +145,13 @@ local plugins = {
         end,
         opts = {}
     },
-    { "nvimdev/guard.nvim" },
+    {
+        "nvimdev/guard.nvim",
+        -- Builtin configuration, optional
+        dependencies = {
+            "nvimdev/guard-collection",
+        },
+    }
 }
 
 require("lazy").setup(plugins)
