@@ -13,8 +13,6 @@ require("mason-lspconfig").setup({
     -- "awk_ls",
     "grammarly",
     "graphql",
-    "pyright",
-    "pylsp",
     "yamlls"
   },
   automatic_installation = true,

@@ -75,7 +75,6 @@ local plugins = {
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "neovim/nvim-lspconfig" },
-    { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
@@ -94,18 +93,18 @@ local plugins = {
         "folke/neodev.nvim",
         opts = {}
     },
-    {
-        "jackMort/ChatGPT.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("chatgpt").setup()
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    },
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("chatgpt").setup()
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     }
+    -- },
     {
         'Exafunction/codeium.vim',
         event = 'BufEnter'
