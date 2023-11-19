@@ -12,8 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    { 'MunifTanjim/nui.nvim' },
-    { 'nvim-tree/nvim-web-devicons' },
+    {   'MunifTanjim/nui.nvim' },
+    {   'nvim-tree/nvim-web-devicons' },
     {
         "RRethy/nvim-base16",
         config = function()
@@ -45,6 +45,11 @@ local plugins = {
         build = 'make'
     },
     {
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf',
+        opts = {}
+    },
+    {
         'akinsho/toggleterm.nvim',
         version = "*",
         config = true
@@ -54,7 +59,7 @@ local plugins = {
         main = "ibl",
         opts = {}
     },
-    { 'lewis6991/gitsigns.nvim' },
+    {   'lewis6991/gitsigns.nvim' },
     {
         'sindrets/diffview.nvim',
         opts = {}
@@ -66,52 +71,39 @@ local plugins = {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            'JoosepAlviste/nvim-ts-context-commentstring',
-        },
         build = ":TSUpdate"
     },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig" },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/nvim-cmp' },
+    {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function()
+            require("ts_context_commentstring").setup({
+                enable_autocmd = false
+            })
+        end
+    },
+    {   "nvim-treesitter/nvim-treesitter-textobjects" },
+    {   "williamboman/mason.nvim" },
+    {   "williamboman/mason-lspconfig.nvim" },
+    {   "neovim/nvim-lspconfig" },
+    {   'hrsh7th/cmp-nvim-lsp' },
+    {   'hrsh7th/cmp-buffer' },
+    {   'hrsh7th/cmp-path' },
+    {   'hrsh7th/cmp-cmdline' },
+    {   'hrsh7th/nvim-cmp' },
+    {   'saadparwaiz1/cmp_luasnip' },
     {
         "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp"
+        version = "2.*",
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+
     },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { "onsails/lspkind.nvim" },
+    {   "onsails/lspkind.nvim" },
     {
         "folke/neodev.nvim",
-        opts = {}
-    },
-    -- {
-    --     "jackMort/ChatGPT.nvim",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("chatgpt").setup()
-    --     end,
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim"
-    --     }
-    -- },
-    {
-        'Exafunction/codeium.vim',
-        event = 'BufEnter'
-    },
-    {
-        'kevinhwang91/nvim-bqf',
-        ft = 'qf',
         opts = {}
     },
     {
@@ -119,7 +111,7 @@ local plugins = {
         opts = {},
         lazy = false,
     },
-    { 'tpope/vim-surround' },
+    {   'tpope/vim-surround' },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -136,6 +128,13 @@ local plugins = {
         }
     },
     {
+        "nvimdev/guard.nvim",
+        -- Builtin configuration, optional
+        dependencies = {
+            "nvimdev/guard-collection",
+        },
+    },
+    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
@@ -144,13 +143,22 @@ local plugins = {
         end,
         opts = {}
     },
-    {
-        "nvimdev/guard.nvim",
-        -- Builtin configuration, optional
-        dependencies = {
-            "nvimdev/guard-collection",
-        },
-    }
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("chatgpt").setup()
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     }
+    -- },
+    -- {
+    --     'Exafunction/codeium.vim',
+    --     event = 'BufEnter'
+    -- },
 }
 
 require("lazy").setup(plugins)
