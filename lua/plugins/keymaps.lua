@@ -33,7 +33,10 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Tree
-keymap("n", "<C-a>", ":Neotree toggle<CR>", opts)
+-- keymap("n", "<C-a>", ":Neotree toggle<CR>", opts)
+-- Tree
+keymap("n", "<C-a>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<C-f>", ":NvimTreeFindFile<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)

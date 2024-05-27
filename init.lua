@@ -1,13 +1,13 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
+require("plugins.init")
+require("plugins.options")
+require("plugins.keymaps")
 
-require "plugins.neotree"
-require "plugins.lualine"
-require "plugins.gitsigns"
-require "plugins.toggleterm"
-require "plugins.telescope"
-require "plugins.treesitter"
-require "plugins.cmp"
-require "plugins.mason"
-require "plugins.formatter"
+require("configs.cmp")
+require("configs.formatter")
+require("configs.linter")
+require("configs.lualine")
+require("configs.mason")
+require("configs.lspconfig")
+require("configs.telescope")
+require("configs.toggleterm")
+require("configs.treesitter")

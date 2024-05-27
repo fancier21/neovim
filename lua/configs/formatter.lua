@@ -1,7 +1,8 @@
 local conform = require("conform")
 
-conform.setup({
+local options = {
   formatters_by_ft = {
+    lua = { "stylua" },
     javascript = { { "prettierd", "prettier" } },
     typescript = { { "prettierd", "prettier" } },
     javascriptreact = { { "prettierd", "prettier" } },
@@ -18,7 +19,9 @@ conform.setup({
     timeout_ms = 500,
     lsp_fallback = true,
   },
-})
+}
+
+conform.setup(options)
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
