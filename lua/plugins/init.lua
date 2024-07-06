@@ -12,7 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	{
+		"Abstract-IDE/Abstract-cs",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd([[colorscheme abscs]])
+		end,
+	},
 	{ "MunifTanjim/nui.nvim" },
+	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{
 		"nvim-lualine/lualine.nvim",
@@ -29,7 +38,6 @@ local plugins = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
-
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
@@ -84,6 +92,7 @@ local plugins = {
 	{ "hrsh7th/cmp-path" },
 	{ "hrsh7th/cmp-cmdline" },
 	{ "hrsh7th/nvim-cmp" },
+	{ "saadparwaiz1/cmp_luasnip" },
 	{
 		"L3MON4D3/LuaSnip",
 		version = "2.*",
@@ -93,17 +102,19 @@ local plugins = {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
-	{ "saadparwaiz1/cmp_luasnip" },
-
 	{ "onsails/lspkind.nvim" },
 	{
-		"folke/neodev.nvim",
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
 		opts = {},
 	},
+	{ "windwp/nvim-ts-autotag" },
 	{ "stevearc/conform.nvim" },
 	{ "mfussenegger/nvim-lint" },
 	{
 		"Exafunction/codeium.nvim",
+		event = "BufEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"hrsh7th/nvim-cmp",
@@ -112,8 +123,6 @@ local plugins = {
 	},
 	-- { 'kevinhwang91/nvim-bqf' },
 	-- { 'sindrets/diffview.nvim' },
-	-- { 'windwp/nvim-autopairs' },
-	-- { 'windwp/nvim-ts-autotag' },
 	-- { "vvhyrro/luarocks.nvim" },
 	-- { "rest-nvim/rest.nvim" },
 	-- { "jackMort/ChatGPT.nvim" },

@@ -22,13 +22,17 @@
 -- vim.lsp.set_log_level 'trace'
 -- require('vim.lsp.log').set_format_func(vim.inspect)
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local lspconfig = require("lspconfig")
+
 local servers = {
-	-- "lua_ls",
+	"lua_ls",
 	"tsserver",
 	"html",
 	"cssls",
-	"emmet_ls",
+	-- "emmet_ls",
 	"tailwindcss",
 	"sqlls",
 	"jsonls",
@@ -63,9 +67,6 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.lua_ls.setup({
 	on_attach = on_attach,
